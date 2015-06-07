@@ -19,6 +19,5 @@ public class SpinnerActivity extends Activity {
 				R.array.planets, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		s.setAdapter(adapter);
-
 	}
 }

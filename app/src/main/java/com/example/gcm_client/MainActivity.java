@@ -90,7 +90,7 @@ public class MainActivity extends FragmentActivity {
         textViewUdid.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				// AndroidManifest.xml¿¡ ActivityÃß°¡ÇÏ±â 
+				// AndroidManifest.xmlì— Activityì¶”ê°€í•˜ê¸°
 				Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(intent);
 			}

@@ -16,17 +16,17 @@ public class FourthActivity extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		
+
 		ArrayList<Person> m_orders = new ArrayList<Person>();
 
-		Person p1 = new Person("¾Èµå·ÎÀÌµå", "011-123-4567"); // ¸®½ºÆ®¿¡ Ãß°¡ÇÒ °´Ã¼ÀÔ´Ï´Ù.
-		Person p2 = new Person("±¸±Û", "02-123-4567"); // ¸®½ºÆ®¿¡ Ãß°¡ÇÒ °´Ã¼ÀÔ´Ï´Ù.
+		Person p1 = new Person("ì•ˆë“œë¡œì´ë“œ", "011-123-4567"); // ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€í•  ê°ì²´ì…ë‹ˆë‹¤.
+		Person p2 = new Person("êµ¬ê¸€", "02-123-4567"); // ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€í•  ê°ì²´ì…ë‹ˆë‹¤.
 
-		m_orders.add(p1); // ¸®½ºÆ®¿¡ °´Ã¼¸¦ Ãß°¡ÇÕ´Ï´Ù.
-		m_orders.add(p2); // ¸®½ºÆ®¿¡ °´Ã¼¸¦ Ãß°¡ÇÕ´Ï´Ù.
+		m_orders.add(p1); // ë¦¬ìŠ¤íŠ¸ì— ê°ì²´ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
+		m_orders.add(p2); // ë¦¬ìŠ¤íŠ¸ì— ê°ì²´ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
 
 		PersonAdapter m_adapter = new PersonAdapter(this, R.layout.row,
-				m_orders); // ¾î´ğÅÍ¸¦ »ı¼ºÇÕ´Ï´Ù.
+				m_orders); // ì–´ëŒ‘í„°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 		setListAdapter(m_adapter);
 	}
 
@@ -35,7 +35,7 @@ public class FourthActivity extends ListActivity {
 		private ArrayList<Person> items;
 
 		public PersonAdapter(Context context, int textViewResourceId,
-				ArrayList<Person> items) {
+							 ArrayList<Person> items) {
 			super(context, textViewResourceId, items);
 			this.items = items;
 		}
@@ -55,7 +55,7 @@ public class FourthActivity extends ListActivity {
 					tt.setText(p.getName());
 				}
 				if (bt != null) {
-					bt.setText("ÀüÈ­¹øÈ£: " + p.getNumber());
+					bt.setText("ì „í™”ë²ˆí˜¸: " + p.getNumber());
 				}
 			}
 			return v;

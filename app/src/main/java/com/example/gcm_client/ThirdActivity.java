@@ -12,7 +12,7 @@ import android.widget.EditText;
 
 public class ThirdActivity extends ListActivity {
 	private ArrayList<String> list;
-	private ArrayAdapter<String> adapter;  // ArrayList¿Í ListView¿¬°á
+	private ArrayAdapter<String> adapter;  // ArrayListì™€ ListViewì—°ê²°
 	private EditText inputText;
 	private Button inputButton;
 	private Button btnCstAdt;
@@ -27,10 +27,10 @@ public class ThirdActivity extends ListActivity {
 		btnCstAdt = (Button)findViewById(R.id.btnCstAdt);
 		list = new ArrayList<String>();
 
-		// simple_list_item_1 : ¸®½ºÆ® ÇÑ ÁÙ¿¡ ÇÑ ÁÙÀÇ ÅØ½ºÆ®¸¸ÀÌ Ç¥½Ã
+		// simple_list_item_1 : ë¦¬ìŠ¤íŠ¸ í•œ ì¤„ì— í•œ ì¤„ì˜ í…ìŠ¤íŠ¸ë§Œì´ í‘œì‹œ
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
 		setListAdapter(adapter);
-		
+
 		inputButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -39,12 +39,12 @@ public class ThirdActivity extends ListActivity {
 				adapter.notifyDataSetChanged();
 			}
 		});
-		
+
 		btnCstAdt.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(ThirdActivity.this, FourthActivity.class);
-                startActivity(intent);
+				startActivity(intent);
 			}
 		});
 	}
