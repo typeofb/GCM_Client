@@ -1,3 +1,3 @@
-Android SDK Manager ¼³Ä¡
+Android SDK Manager ì„¤ì¹˜
 Tools - Android SDK Build-tools 22.0.1
 Extras - Android Support Repository
