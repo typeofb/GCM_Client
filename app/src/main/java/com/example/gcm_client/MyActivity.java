@@ -2,16 +2,17 @@ package com.example.gcm_client;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Context;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.AlphaAnimation;
@@ -21,6 +22,8 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 public class MyActivity extends Activity implements OnClickListener, LocationListener {
 
@@ -64,7 +67,7 @@ public class MyActivity extends Activity implements OnClickListener, LocationLis
     }
 
     protected void showLogo() {
-        ImageView splash = (ImageView) findViewById(R.id.splash);
+        ImageView splash = findViewById(R.id.splash);
         AlphaAnimation aa = new AlphaAnimation(1.0f, 0.0f);
         aa.setStartOffset(1000);
         aa.setDuration(1000);
@@ -74,7 +77,12 @@ public class MyActivity extends Activity implements OnClickListener, LocationLis
     }
 
     protected void gpsInit() {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
         locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
         if (locManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER))
             locManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, this);
         else
@@ -98,7 +106,7 @@ public class MyActivity extends Activity implements OnClickListener, LocationLis
 
     @SuppressLint("SetJavaScriptEnabled")
     protected void webViewInit() {
-        webView1 = (WebView) findViewById(R.id.webView);
+        webView1 = findViewById(R.id.webView);
         webView1.getSettings().setJavaScriptEnabled(true);
         webView1.getSettings().setDomStorageEnabled(true);
         webView1.getSettings().setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
@@ -107,18 +115,18 @@ public class MyActivity extends Activity implements OnClickListener, LocationLis
     }
 
     protected void layoutInit() {
-        layoutHome = (LinearLayout) findViewById(R.id.layout_home);
+        layoutHome = findViewById(R.id.layout_home);
 
-        home = (ImageView) findViewById(R.id.home);
-        about = (ImageView) findViewById(R.id.about);
-        food1 = (ImageView) findViewById(R.id.food1);
-        food2 = (ImageView) findViewById(R.id.food2);
-        food3 = (ImageView) findViewById(R.id.food3);
-        food4 = (ImageView) findViewById(R.id.food4);
-        food5 = (ImageView) findViewById(R.id.food5);
-        food6 = (ImageView) findViewById(R.id.food6);
-        food7 = (ImageView) findViewById(R.id.food7);
-        food8 = (ImageView) findViewById(R.id.food8);
+        home = findViewById(R.id.home);
+        about = findViewById(R.id.about);
+        food1 = findViewById(R.id.food1);
+        food2 = findViewById(R.id.food2);
+        food3 = findViewById(R.id.food3);
+        food4 = findViewById(R.id.food4);
+        food5 = findViewById(R.id.food5);
+        food6 = findViewById(R.id.food6);
+        food7 = findViewById(R.id.food7);
+        food8 = findViewById(R.id.food8);
 
         alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
         alphaAnimation.setDuration(1);
@@ -188,7 +196,7 @@ public class MyActivity extends Activity implements OnClickListener, LocationLis
 
     protected void clickFood(String queryKeyword) {
         webView1.clearHistory();
-        webView1.loadUrl("http://m.map.naver.com/search.nhn?query=" + queryKeyword + "&sm=clk&centerCoord=" + latitudeStr + ":" + longitudeStr
+        webView1.loadUrl("https://m.map.naver.com/search.nhn?query=" + queryKeyword + "&sm=clk&centerCoord=" + latitudeStr + ":" + longitudeStr
                 + "&type=SITE_1&siteSort=1");
         layoutHome.startAnimation(alphaAnimation);
         layoutHome.setVisibility(View.INVISIBLE);
@@ -255,7 +263,7 @@ public class MyActivity extends Activity implements OnClickListener, LocationLis
             this.finish();
         }
         String currentUrl = webView1.getUrl();
-        if (currentUrl.substring(0, 29).matches("http://m.map.naver.com/search") || currentUrl.substring(0, 21).matches("file:///android_asset")) {
+        if (currentUrl.substring(0, 29).matches("https://m.map.naver.com/search") || currentUrl.substring(0, 21).matches("file:///android_asset")) {
             clickHome();
         } else {
             webView1.goBack();
@@ -318,7 +326,7 @@ public class MyActivity extends Activity implements OnClickListener, LocationLis
 
     @Override
     public void onProviderDisabled(String s) {
-        last = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//        last = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
     }
 
     public void sleep(int i) {
