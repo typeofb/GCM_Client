@@ -228,7 +228,6 @@ public class MainActivity extends FragmentActivity {
 					mActivity.runOnUiThread(new Runnable() {
 						@Override
 						public void run() {
-							// TODO Auto-generated method stub
 							Toast.makeText(mActivity, sb, Toast.LENGTH_SHORT).show();
 						}
 					});
