@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,40 +29,34 @@ import java.net.URL;
 @SuppressWarnings("deprecation")
 public class MainActivity extends FragmentActivity {
 
-	String serverNames[] = { "Development", "Staging", "Official" };
-	int ChosenServerName = 0;
+	private String[] serverNames = { "Development", "Staging", "Official" };
+	private int ChosenServerName = 0;
 
-	LinearLayout textViewServer;
-	TextView textViewServer2;
-	
-	LinearLayout textViewUdid;
-	TextView textViewUdid2;
-	EditText editTextUdid;
-	
-	LinearLayout textViewMccmnc;
-	TextView textViewMccmnc2;
-	
-	LinearLayout textViewModel;
-	TextView textViewModel2;
-	CustomizedDialog cd;
-	
-	LinearLayout textViewOs;
-	TextView textViewOs2;
-	Activity mActivity;
-	
-	LinearLayout textViewList;
-	TextView textViewList2;
-	
-	LinearLayout spinner;
-	TextView spinnerText;
+	private LinearLayout textViewServer;
+	private TextView textViewServer2;
+
+	private LinearLayout textViewUdid;
+	private TextView textViewUdid2;
+
+	private LinearLayout textViewMccmnc;
+
+	private LinearLayout textViewModel;
+	private CustomizedDialog cd;
+
+	private LinearLayout textViewOs;
+	private Activity mActivity;
+
+	private LinearLayout textViewList;
+
+	private LinearLayout spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        textViewServer2 = (TextView)findViewById(R.id.server_name_view);
-        textViewServer = (LinearLayout)findViewById(R.id.server_name);
+        textViewServer2 = findViewById(R.id.server_name_view);
+        textViewServer = findViewById(R.id.server_name);
         textViewServer.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -89,8 +82,8 @@ public class MainActivity extends FragmentActivity {
 			}
 		});
         
-        textViewUdid2 = (TextView)findViewById(R.id.udid_view);
-        textViewUdid = (LinearLayout)findViewById(R.id.udid);
+        textViewUdid2 = findViewById(R.id.udid_view);
+        textViewUdid = findViewById(R.id.udid);
         textViewUdid.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -100,7 +93,7 @@ public class MainActivity extends FragmentActivity {
 			}
 		});
         
-        textViewMccmnc = (LinearLayout)findViewById(R.id.mccmnc);
+        textViewMccmnc = findViewById(R.id.mccmnc);
         textViewMccmnc.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -108,7 +101,7 @@ public class MainActivity extends FragmentActivity {
 			}
 		});
         
-        textViewModel = (LinearLayout)findViewById(R.id.model_name);
+        textViewModel = findViewById(R.id.model_name);
         textViewModel.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -119,7 +112,7 @@ public class MainActivity extends FragmentActivity {
 		});
 		
         mActivity = this;
-        textViewOs = (LinearLayout)findViewById(R.id.os_version);
+        textViewOs = findViewById(R.id.os_version);
         textViewOs.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -127,7 +120,7 @@ public class MainActivity extends FragmentActivity {
 			}
 		});
         
-        textViewList = (LinearLayout)findViewById(R.id.listView);
+        textViewList = findViewById(R.id.listView);
         textViewList.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -136,7 +129,7 @@ public class MainActivity extends FragmentActivity {
 			}
 		});
         
-        spinner = (LinearLayout)findViewById(R.id.spinner);
+        spinner = findViewById(R.id.spinner);
         spinner.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
