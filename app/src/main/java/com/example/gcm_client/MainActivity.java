@@ -10,6 +10,8 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,10 +29,10 @@ import java.net.URL;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends FragmentActivity {
-	
+
 	String serverNames[] = { "Development", "Staging", "Official" };
 	int ChosenServerName = 0;
-	
+
 	LinearLayout textViewServer;
 	TextView textViewServer2;
 	
@@ -54,7 +56,7 @@ public class MainActivity extends FragmentActivity {
 	
 	LinearLayout spinner;
 	TextView spinnerText;
-	
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -242,10 +244,22 @@ public class MainActivity extends FragmentActivity {
 		}
     }
     
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
-    }*/
+    }
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.id.menu_settings:
+				Log.d(null, String.valueOf(item.getItemId()));
+				break;
+			default:
+				return false;
+		}
+		return true;
+	}
 }
