@@ -277,7 +277,6 @@ public class MainActivity extends FragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.menu_settings:
-				Log.d(null, String.valueOf(item.getItemId()));
 				break;
 			default:
 				return false;
