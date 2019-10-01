@@ -54,7 +54,7 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         textViewServer2 = findViewById(R.id.server_name_view);
         textViewServer = findViewById(R.id.server_name);
         textViewServer.setOnClickListener(new View.OnClickListener() {
@@ -75,13 +75,13 @@ public class MainActivity extends FragmentActivity {
 				})
 				.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
-						
+
 					}
 				});
 				adb.show();
 			}
 		});
-        
+
         textViewUdid2 = findViewById(R.id.udid_view);
         textViewUdid = findViewById(R.id.udid);
         textViewUdid.setOnClickListener(new Button.OnClickListener() {
@@ -92,7 +92,7 @@ public class MainActivity extends FragmentActivity {
                 startActivity(intent);
 			}
 		});
-        
+
         textViewMccmnc = findViewById(R.id.mccmnc);
         textViewMccmnc.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -100,17 +100,17 @@ public class MainActivity extends FragmentActivity {
 				showDialog(0);
 			}
 		});
-        
+
         textViewModel = findViewById(R.id.model_name);
         textViewModel.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				cd = new CustomizedDialog();
 				cd.show(getSupportFragmentManager(), "MYTAG");
-				
+
 			}
 		});
-		
+
         mActivity = this;
         textViewOs = findViewById(R.id.os_version);
         textViewOs.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +119,7 @@ public class MainActivity extends FragmentActivity {
 		        new RestFulTask().execute(null,null,null);
 			}
 		});
-        
+
         textViewList = findViewById(R.id.listView);
         textViewList.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -128,7 +128,7 @@ public class MainActivity extends FragmentActivity {
                 startActivity(intent);
 			}
 		});
-        
+
         spinner = findViewById(R.id.spinner);
         spinner.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -158,12 +158,12 @@ public class MainActivity extends FragmentActivity {
                    public void onClick(DialogInterface dialog, int id) {
                        MainActivity.this.finish();
                    }
-                })
+               })
                .setNegativeButton("No", new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int id) {
                        dialog.cancel();
-                    }
-                 });
+                   }
+               });
 		return builder.create();
 	}
 
@@ -183,12 +183,12 @@ public class MainActivity extends FragmentActivity {
             })
             .setNegativeButton("No", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    
+
                 }
             });
 			return mBuilder.create();
 		}
-		
+
 		@Override
 		public void onStop() {
 			super.onStop();
@@ -199,34 +199,34 @@ public class MainActivity extends FragmentActivity {
     public class RestFulTask extends AsyncTask<Void, Void, Void> {
 		@Override
 		protected Void doInBackground(Void... arg0) {
-			
+
 			try {
 //				URL url = new URL("https://dev.lgcpm.com:45010/oapi/gcm/gcmServerTest");
 				URL url = new URL("http://typeofb.appspot.com/oapi/gcm/gcmServerTest");
 				String body = "{\"regId\":\"APA91bHun4MxP5egoKMwt2KZFBaFUH-1RYqx...\",\"data\":{\"Nick\":\"Mario\",\"Text\":\"great match!\",\"Room\":\"PortugalVSDenmark\"}}";
-	
+
 		        HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 //		        conn.setDoInput(true);
 		        conn.setDoOutput(true);
 		        conn.setUseCaches(false);
 		        conn.setRequestMethod("POST");
 		        conn.setRequestProperty("Content-Type", "application/json");
-	
+
 		        OutputStream out = conn.getOutputStream();
 		        out.write(body.getBytes("UTF-8"));
 		        out.close();
-	
+
 		        int status = conn.getResponseCode();
 		        InputStream input;
 		        if (status == HttpURLConnection.HTTP_OK) {
 		            input = conn.getInputStream();
-		            
+
 					final StringBuffer sb = new StringBuffer();
 					byte[] b = new byte[1024];
 					for (int n; (n = input.read(b)) != -1;) {
 						sb.append(new String(b, 0, n));
 					}
-					
+
 					mActivity.runOnUiThread(new Runnable() {
 						@Override
 						public void run() {
@@ -243,7 +243,7 @@ public class MainActivity extends FragmentActivity {
 			return null;
 		}
     }
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
