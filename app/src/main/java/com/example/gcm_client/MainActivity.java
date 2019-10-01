@@ -114,7 +114,7 @@ public class MainActivity extends FragmentActivity {
 						}
 					}
 				});
-				dialog.show(getSupportFragmentManager(), "MYTAG");
+				dialog.show(getSupportFragmentManager(), "TAG");
 			}
 		});
 
@@ -205,7 +205,7 @@ public class MainActivity extends FragmentActivity {
             })
             .setNegativeButton("No", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-
+					Log.i("Model", String.valueOf(id));
                 }
             });
 			return mBuilder.create();
