@@ -137,14 +137,21 @@ public class MainActivity extends FragmentActivity {
                 startActivity(intent);
 			}
 		});
+
+		spinner = findViewById(R.id.delivery);
+		spinner.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, MyActivity.class);
+				startActivity(intent);
+			}
+		});
     }
-    
-    @Override
-    // showDialog()
+
+    // Edit MCC/MNC
+	@Override
 	protected Dialog onCreateDialog(int id) {
-    	Dialog dialog;
-        AlertDialog.Builder builder;
-        builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Are you sure you want to exit?")
                .setCancelable(false)
                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -157,10 +164,10 @@ public class MainActivity extends FragmentActivity {
                        dialog.cancel();
                     }
                  });
-        dialog = builder.create();
-        return dialog;
+		return builder.create();
 	}
-    
+
+	// Edit Model
     public static class CustomizedDialog extends DialogFragment {
 		@Override
 		public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -171,14 +178,14 @@ public class MainActivity extends FragmentActivity {
 			mBuilder.setMessage("Model");
 			mBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    
+
                 }
-             })
+            })
             .setNegativeButton("No", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     
                  }
-              });
+            });
 			return mBuilder.create();
 		}
 		
@@ -188,8 +195,8 @@ public class MainActivity extends FragmentActivity {
 		}
     }
 
+    // Edit OS
     public class RestFulTask extends AsyncTask<Void, Void, Void> {
-
 		@Override
 		protected Void doInBackground(Void... arg0) {
 			

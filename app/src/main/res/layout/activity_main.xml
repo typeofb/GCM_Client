@@ -166,4 +166,26 @@
         android:layout_height="2dp"
         android:background="#fff" />
 
+    <LinearLayout
+        android:id="@+id/delivery"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delivery"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/delivery_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#fff" />
 </LinearLayout>
