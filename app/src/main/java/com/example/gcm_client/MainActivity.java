@@ -185,7 +185,7 @@ public class MainActivity extends FragmentActivity {
 			return fragment;
 		}
 
-		public interface NameInputListener  {
+		public interface NameInputListener {
 			void onNameInputComplete(String name);
 		}
 
