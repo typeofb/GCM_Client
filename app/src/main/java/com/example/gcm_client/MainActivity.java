@@ -41,7 +41,7 @@ public class MainActivity extends FragmentActivity {
 	private LinearLayout textViewMccmnc;
 
 	private LinearLayout textViewModel;
-	private CustomizedDialog cd;
+	private TextView textViewModel1;
 
 	private LinearLayout textViewOs;
 	private Activity mActivity;
@@ -101,17 +101,23 @@ public class MainActivity extends FragmentActivity {
 			}
 		});
 
-        textViewModel = findViewById(R.id.model_name);
-        textViewModel.setOnClickListener(new View.OnClickListener() {
+		textViewModel1 = findViewById(R.id.model_view);
+		textViewModel = findViewById(R.id.model_name);
+		textViewModel.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				cd = new CustomizedDialog();
-				cd.show(getSupportFragmentManager(), "MYTAG");
-
+				CustomizedDialog dialog = CustomizedDialog.newInstance(new CustomizedDialog.NameInputListener() {
+					@Override
+					public void onNameInputComplete(String name) {
+						if (name != null) {
+							textViewModel1.setText(name);
+						}
+					}
+				});
+				dialog.show(getSupportFragmentManager(), "MYTAG");
 			}
 		});
 
-        mActivity = this;
         textViewOs = findViewById(R.id.os_version);
         textViewOs.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -169,16 +175,32 @@ public class MainActivity extends FragmentActivity {
 
 	// Edit Model
     public static class CustomizedDialog extends DialogFragment {
+
+		private TextView textViewModel2;
+		private NameInputListener listener;
+
+		public static CustomizedDialog newInstance(NameInputListener listener) {
+			CustomizedDialog fragment = new CustomizedDialog();
+			fragment.listener = listener;
+			return fragment;
+		}
+
+		public interface NameInputListener  {
+			void onNameInputComplete(String name);
+		}
+
 		@Override
 		public Dialog onCreateDialog(Bundle savedInstanceState) {
 			AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
 			LayoutInflater mLayoutInflater = getActivity().getLayoutInflater();
-			mBuilder.setView(mLayoutInflater.inflate(R.layout.popup_model, null));
+			View view = mLayoutInflater.inflate(R.layout.popup_model, null);
+			textViewModel2 = view.findViewById(R.id.textModel);
+			mBuilder.setView(view);
 			mBuilder.setTitle("Model");
 			mBuilder.setMessage("Model");
 			mBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-
+					listener.onNameInputComplete(textViewModel2.getText().toString());
                 }
             })
             .setNegativeButton("No", new DialogInterface.OnClickListener() {
