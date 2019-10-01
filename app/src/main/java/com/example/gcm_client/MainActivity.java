@@ -184,7 +184,7 @@ public class MainActivity extends FragmentActivity {
             .setNegativeButton("No", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     
-                 }
+                }
             });
 			return mBuilder.create();
 		}
