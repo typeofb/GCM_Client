@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,15 +21,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentActivity;
+import com.example.gcm_client.lib.MsgHandler;
+import com.example.gcm_client.util.ProgressDialogHelper;
 
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static java.lang.Thread.sleep;
+
 @SuppressWarnings("deprecation")
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends MsgHandler {
+
+    private Activity context;
 
 	private String[] serverNames = { "Development", "Staging", "Official" };
 	private int ChosenServerName = 0;
@@ -54,6 +61,8 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+		this.context = this;
 
         textViewServer2 = findViewById(R.id.server_name_view);
         textViewServer = findViewById(R.id.server_name);
@@ -122,7 +131,13 @@ public class MainActivity extends FragmentActivity {
         textViewOs.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-		        new RestFulTask().execute(null,null,null);
+                ProgressDialogHelper.showProgressHelper(context, new Runnable() {
+                    @Override
+                    public void run() {
+						new RestFulTask().execute();
+						sendActivityUpdate(0, 0);
+					}
+                });
 			}
 		});
 
@@ -219,6 +234,7 @@ public class MainActivity extends FragmentActivity {
 
     // Edit OS
     public class RestFulTask extends AsyncTask<Void, Void, Void> {
+
 		@Override
 		protected Void doInBackground(Void... arg0) {
 
