@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,12 +27,10 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static java.lang.Thread.sleep;
-
 @SuppressWarnings("deprecation")
 public class MainActivity extends MsgHandler {
 
-    private Activity context;
+    private Activity mActivity;
 
 	private String[] serverNames = { "Development", "Staging", "Official" };
 	private int ChosenServerName = 0;
@@ -51,7 +47,6 @@ public class MainActivity extends MsgHandler {
 	private TextView textViewModel1;
 
 	private LinearLayout textViewOs;
-	private Activity mActivity;
 
 	private LinearLayout textViewList;
 
@@ -62,7 +57,7 @@ public class MainActivity extends MsgHandler {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-		this.context = this;
+		this.mActivity = this;
 
         textViewServer2 = findViewById(R.id.server_name_view);
         textViewServer = findViewById(R.id.server_name);
@@ -131,7 +126,7 @@ public class MainActivity extends MsgHandler {
         textViewOs.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-                ProgressDialogHelper.showProgressHelper(context, new Runnable() {
+                ProgressDialogHelper.showProgressHelper(mActivity, new Runnable() {
                     @Override
                     public void run() {
 						new RestFulTask().execute();
