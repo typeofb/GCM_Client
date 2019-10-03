@@ -10,6 +10,7 @@ public class ProgressDialogHelper {
         progressDialog.setMessage("잠시만 기다려 주십시오.");
         progressDialog.show();
         final Thread t = new Thread("ProgressBar") {
+            @Override
             public void run() {
                 runner.run();
                 context.runOnUiThread(new Runnable() {
