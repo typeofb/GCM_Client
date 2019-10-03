@@ -14,6 +14,7 @@ public class ProgressDialogHelper {
             public void run() {
                 runner.run();
                 context.runOnUiThread(new Runnable() {
+                    @Override
                     public void run() {
                         progressDialog.dismiss();
                 }});
