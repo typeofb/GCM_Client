@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class FourthActivity extends ListActivity {
+public class PersonActivity extends ListActivity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.scaffold);
+		setContentView(R.layout.activity_main);
 
 		ArrayList<Person> m_orders = new ArrayList<Person>();
 

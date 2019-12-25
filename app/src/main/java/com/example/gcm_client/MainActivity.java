@@ -92,7 +92,7 @@ public class MainActivity extends MsgHandler {
 			@Override
 			public void onClick(View arg0) {
 				// AndroidManifest.xml에 Activity추가하기
-				Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+				Intent intent = new Intent(MainActivity.this, UdidActivity.class);
                 startActivity(intent);
 			}
 		});
@@ -129,7 +129,7 @@ public class MainActivity extends MsgHandler {
                 ProgressDialogHelper.showProgressHelper(mActivity, new Runnable() {
                     @Override
                     public void run() {
-						new RestFulTask().execute();
+						new RestfulTask().execute();
 						sendActivityUpdate(0, 0);
 					}
                 });
@@ -140,7 +140,7 @@ public class MainActivity extends MsgHandler {
         textViewList.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, ThirdActivity.class);
+				Intent intent = new Intent(MainActivity.this, ListviewActivity.class);
                 startActivity(intent);
 			}
 		});
@@ -228,7 +228,7 @@ public class MainActivity extends MsgHandler {
     }
 
     // Edit OS
-    public class RestFulTask extends AsyncTask<Void, Void, Void> {
+    public class RestfulTask extends AsyncTask<Void, Void, Void> {
 
 		@Override
 		protected Void doInBackground(Void... arg0) {

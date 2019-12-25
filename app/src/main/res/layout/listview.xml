@@ -9,29 +9,29 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-        
-	    <!-- 5:1 비율로 화면구성 -->
-	    <EditText
-	        android:id="@+id/inputText"
-	        android:layout_width="0px"
-	        android:layout_height="fill_parent"
-	        android:layout_weight="5"
-	        android:hint="추가할 단어를 입력하세요." />
-	
-	    <Button
-	        android:id="@+id/inputButton"
-	        android:layout_width="0px"
-	        android:layout_height="fill_parent"
-	        android:layout_weight="2"
-	        android:text="Add" />
-	    
-	    <Button
-	        android:id="@+id/btnCstAdt"
-	        android:layout_width="0px"
-	        android:layout_height="fill_parent"
-	        android:layout_weight="2"
-	        android:text="응용" />
-	</LinearLayout>
+
+        <!-- 5:1 비율로 화면구성 -->
+        <EditText
+            android:id="@+id/inputText"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="5"
+            android:hint="추가할 단어를 입력하세요." />
+
+        <Button
+            android:id="@+id/inputButton"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:text="Add" />
+
+        <Button
+            android:id="@+id/btnCstAdt"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:text="응용" />
+    </LinearLayout>
 
     <ListView
         android:id="@android:id/list"

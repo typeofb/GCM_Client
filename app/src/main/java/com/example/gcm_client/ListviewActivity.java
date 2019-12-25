@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class ThirdActivity extends ListActivity {
+public class ListviewActivity extends ListActivity {
 	private ArrayList<String> list;
 	private ArrayAdapter<String> adapter;  // ArrayList와 ListView연결
 	private EditText inputText;
@@ -20,7 +20,7 @@ public class ThirdActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.scaffold);
+		setContentView(R.layout.listview);
 
 		inputText = (EditText)findViewById(R.id.inputText);
 		inputButton = (Button)findViewById(R.id.inputButton);
@@ -43,7 +43,7 @@ public class ThirdActivity extends ListActivity {
 		btnCstAdt.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(ThirdActivity.this, FourthActivity.class);
+				Intent intent = new Intent(ListviewActivity.this, PersonActivity.class);
 				startActivity(intent);
 			}
 		});

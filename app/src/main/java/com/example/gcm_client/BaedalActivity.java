@@ -58,7 +58,7 @@ public class BaedalActivity extends Activity implements OnClickListener, Locatio
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.baedal);
+        setContentView(R.layout.activity_baedal);
         showLogo();
         gpsInit();
         webViewInit();
