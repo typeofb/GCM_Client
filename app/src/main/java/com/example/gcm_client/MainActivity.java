@@ -158,7 +158,7 @@ public class MainActivity extends MsgHandler {
 		spinner.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, MyActivity.class);
+				Intent intent = new Intent(MainActivity.this, BaedalActivity.class);
 				startActivity(intent);
 			}
 		});

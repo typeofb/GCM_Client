@@ -15,7 +15,7 @@ public class FourthActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.scaffold);
 
 		ArrayList<Person> m_orders = new ArrayList<Person>();
 

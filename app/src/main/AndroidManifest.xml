@@ -38,7 +38,7 @@
             android:label="Spinner" >
         </activity>
         <activity
-            android:name="com.example.gcm_client.MyActivity"
+            android:name="com.example.gcm_client.BaedalActivity"
             android:label="@string/app_name2" >
         </activity>
     </application>

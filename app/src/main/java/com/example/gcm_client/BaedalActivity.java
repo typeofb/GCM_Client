@@ -25,7 +25,7 @@ import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
-public class MyActivity extends Activity implements OnClickListener, LocationListener {
+public class BaedalActivity extends Activity implements OnClickListener, LocationListener {
 
     // [GPS fields]
     private LocationManager locManager;
@@ -58,7 +58,7 @@ public class MyActivity extends Activity implements OnClickListener, LocationLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
+        setContentView(R.layout.baedal);
         showLogo();
         gpsInit();
         webViewInit();

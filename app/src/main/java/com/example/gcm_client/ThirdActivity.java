@@ -20,7 +20,7 @@ public class ThirdActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.scaffold);
 
 		inputText = (EditText)findViewById(R.id.inputText);
 		inputButton = (Button)findViewById(R.id.inputButton);
